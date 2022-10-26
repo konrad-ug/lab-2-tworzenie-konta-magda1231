@@ -15,47 +15,51 @@ class TestCreateBankAccount(unittest.TestCase):
 
 
     def test_zbyt_dlugi_pesel(self): 
-        pesel = "1111111111111"
+        pesel = "6111111111111"
         pierwsze_konto = Konto("Dariusz", "Januszewski", pesel)
         self.assertEqual(pierwsze_konto.pesel, "Niepoprawny pesel", "Zła wartość wyświetlana w przypadku zbyt długiego peselu")
 
     def test_zbyt_krotki_pesel(self): 
-        pesel = "11111"
+        pesel = "61111"
         pierwsze_konto = Konto("Dariusz", "Januszewski", pesel)
         self.assertEqual(pierwsze_konto.pesel, "Niepoprawny pesel", "Zła wartość wyświetlana w przypadku zbyt krótkiego peselu")
 
-    def test_zbyt_długi_kod(self):
+    def test_zbyt_długi_kod_po_1960(self):
         kod = "PROM_1231223"
-        pierwsze_konto = Konto("Dariusz", "Januszewski", "1111111111111", kod)
+        pierwsze_konto = Konto("Dariusz", "Januszewski", "6111111111111", kod)
         self.assertEqual(pierwsze_konto.saldo, 0, "Zbyt długi kod zaakceptowany" )
 
-    def test_zbyt_krótki_kod(self): 
+    def test_zbyt_krótki_kod_po_1960(self): 
         kod = "PROM_12"
-        pierwsze_konto = Konto("Dariusz", "Januszewski", "1111111111111", kod)
+        pierwsze_konto = Konto("Dariusz", "Januszewski", "6111111111111", kod)
         self.assertEqual(pierwsze_konto.saldo, 0, "Zbyt długi kod zaakceptowany" )
 
-    def test_zły_kod(self):
+    def test_zły_kod_po_1960(self):
         kod = "KOD_PROMOCYJNY"
-        pierwsze_konto = Konto("Dariusz", "Januszewski", "1111111111111", kod)
+        pierwsze_konto = Konto("Dariusz", "Januszewski", "6111111111111", kod)
         self.assertEqual(pierwsze_konto.saldo, 0, "Zły kod zaakceptowany" )
 
-    def test_zły_kod_małe_litery(self):
+    def test_zły_kod_małe_litery_po_1960(self):
         kod = "prom_213"
-        pierwsze_konto = Konto("Dariusz", "Januszewski", "1111111111111", kod)
+        pierwsze_konto = Konto("Dariusz", "Januszewski", "6111111111111", kod)
         self.assertEqual(pierwsze_konto.saldo, 0, "Zły kod zaakceptowany" )
 
-    def test_saldo_z_dobrym_kodem(self):
+    def test_saldo_z_dobrym_kodem_po_1960(self):
         kod = "PROM_3.1"
-        pierwsze_konto = Konto("Dariusz", "Januszewski", "1111111111111", kod)
+        pierwsze_konto = Konto("Dariusz", "Januszewski", "6111111111111", kod)
         self.assertEqual(pierwsze_konto.saldo, 50, "Zła ilość pieniędzy" )
 
-    def test_kod_po_1960(self):
+    def test_dobry_kod_przed_1960(self):
         kod = "PROM_3.1"
-        pierwsze_konto = Konto("Dariusz", "Januszewski", "6511111111111", kod)
-        self.assertEqual(pierwsze_konto.saldo, 50, "Zła ilość pieniędzy" )
+        pierwsze_konto = Konto("Dariusz", "Januszewski", "5011111111111", kod)
+        self.assertEqual(pierwsze_konto.saldo, 0, "Kod przyznany osobie urodzonej przed 1960" )
 
-    def test_kod_przed_1960(self):
+    def test_dobry_kod_w_1960(self):
         kod = "PROM_3.1"
         pierwsze_konto = Konto("Dariusz", "Januszewski", "6011111111111", kod)
-        self.assertEqual(pierwsze_konto.saldo, 0, "Zła ilość pieniędzy" )
+        self.assertEqual(pierwsze_konto.saldo, 0, "Kod przyznany osobie urodzonej w 1960" )
 
+    def test_dobry_kod_przed_1900(self):
+        kod = "PROM_3.1"
+        pierwsze_konto = Konto("Dariusz", "Januszewski", "9881111111111", kod)
+        self.assertEqual(pierwsze_konto.saldo, 0, "Kod przyznany osobie urodzonej przed 1960" )
