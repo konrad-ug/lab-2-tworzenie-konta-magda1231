@@ -39,8 +39,23 @@ class TestCreateBankAccount(unittest.TestCase):
         pierwsze_konto = Konto("Dariusz", "Januszewski", "1111111111111", kod)
         self.assertEqual(pierwsze_konto.saldo, 0, "Zły kod zaakceptowany" )
 
+    def test_zły_kod_małe_litery(self):
+        kod = "prom_213"
+        pierwsze_konto = Konto("Dariusz", "Januszewski", "1111111111111", kod)
+        self.assertEqual(pierwsze_konto.saldo, 0, "Zły kod zaakceptowany" )
+
     def test_saldo_z_dobrym_kodem(self):
         kod = "PROM_3.1"
         pierwsze_konto = Konto("Dariusz", "Januszewski", "1111111111111", kod)
         self.assertEqual(pierwsze_konto.saldo, 50, "Zła ilość pieniędzy" )
+
+    def test_kod_po_1960(self):
+        kod = "PROM_3.1"
+        pierwsze_konto = Konto("Dariusz", "Januszewski", "6511111111111", kod)
+        self.assertEqual(pierwsze_konto.saldo, 50, "Zła ilość pieniędzy" )
+
+    def test_kod_przed_1960(self):
+        kod = "PROM_3.1"
+        pierwsze_konto = Konto("Dariusz", "Januszewski", "6011111111111", kod)
+        self.assertEqual(pierwsze_konto.saldo, 0, "Zła ilość pieniędzy" )
 
