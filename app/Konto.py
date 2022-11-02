@@ -9,7 +9,6 @@ class Konto:
         self.sprawdzenie_kodu_po_1960(kod)
         self.oplata = 1
 
-
     def sprawdzenie_peselu(self,pesel):
             if (len(pesel) != 11):
                 self.pesel = "Niepoprawny pesel"
@@ -35,7 +34,7 @@ class Konto:
         if(kwota <= self.saldo and kwota > 0 ):
             self.saldo = self.saldo - kwota - self.oplata 
 
-    
+
         
 
 

@@ -20,10 +20,6 @@ class KontoFirmowe(Konto):
     def zaksięguj_przelew_przychodzący(self, kwota):
         return super().zaksięguj_przelew_przychodzący(kwota)
     
-    
     def zaksięguj_wychodzacy_przelew_ekspresowy(self, kwota):
         return super().zaksięguj_wychodzacy_przelew_ekspresowy(kwota)
    
-
-# konto = KontoFirmowe("aa","1111111111")
-# print(konto.zaksięguj_wychodzacy_przelew_ekspresowy(5))

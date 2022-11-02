@@ -1,14 +1,11 @@
 import unittest
 
-
 from ..Konto import Konto
 
 class TestKsięgowanie(unittest.TestCase):
     imie = "Darek"
     nazwisko = "Kowalski"
     pesel = "1111111111"
-    nazwa_firmy = "kwas xy sp. zoo"
-    nip = "1111111111"
 
     def test_nieudany_przelew_wychodzący(self):
        konto = Konto(self.imie,self.nazwisko,self.pesel)
