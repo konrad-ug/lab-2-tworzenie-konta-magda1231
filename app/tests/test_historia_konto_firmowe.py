@@ -25,12 +25,12 @@ class TestHistoriaKontoFirmowe(unittest.TestCase):
         self.assertEqual(konto.historia,[-800, -5])
 
     def test_historia_pare_przelewów(self):
-        konto = KontoFirmowe(self.imie,self.nazwisko,self.pesel)
+        konto = KontoFirmowe(self.nazwa_firmy,self.nip)
         konto.saldo = 10000
-        konto.zaksięguj_przelew_przychodzący(500)
+        konto.zaksięguj_przelew_wychodzący(500)
         konto.zaksięguj_wychodzacy_przelew_ekspresowy(800)
-        konto.zaksięguj_wychodzacy_przelew_ekspresowy(800)
-        self.assertEqual(konto.historia, [500, -800, -5, -700, -5]) 
+        konto.zaksięguj_wychodzacy_przelew_ekspresowy(700)
+        self.assertEqual(konto.historia, [-500, -800, -5, -700, -5]) 
 
    
    

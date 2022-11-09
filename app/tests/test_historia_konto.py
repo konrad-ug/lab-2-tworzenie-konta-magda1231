@@ -61,5 +61,5 @@ class TestHistoriaKonto(unittest.TestCase):
         konto.saldo = 10000
         konto.zaksięguj_przelew_wychodzący(500)
         konto.zaksięguj_wychodzacy_przelew_ekspresowy(800)
-        konto.zaksięguj_wychodzacy_przelew_ekspresowy(800)
-        self.assertEqual(konto.historia, [500, -800, -1, -700, -1]) 
+        konto.zaksięguj_wychodzacy_przelew_ekspresowy(700)
+        self.assertEqual(konto.historia, [-500, -800, -1, -700, -1]) 
