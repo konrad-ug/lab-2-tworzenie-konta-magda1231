@@ -12,6 +12,7 @@ class TestTworzenieKonta(unittest.TestCase):
         self.assertEqual(pierwsze_konto.nazwisko, "Januszewski", "Nazwisko nie zostało zapisane!")
         self.assertEqual(pierwsze_konto.saldo, 0, "Saldo nie jest zerowe!")
         self.assertEqual(pierwsze_konto.pesel, pesel , "Niepoprawny pesel")
+        self.assertEqual(pierwsze_konto.historia, [] , "Zła początkowa historia")
 
 
     def test_zbyt_dlugi_pesel(self): 

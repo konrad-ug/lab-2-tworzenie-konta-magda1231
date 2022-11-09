@@ -62,26 +62,3 @@ class TestKsięgowanie(unittest.TestCase):
         konto.zaksięguj_wychodzacy_przelew_ekspresowy(-800)
         self.assertEqual(konto.saldo,700)
 
-
-
- 
-
-
-
-    
-
-
-
-
-    
-
-
-
-
-
-
-
-        
-
-        
-

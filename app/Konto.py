@@ -1,5 +1,6 @@
 import re
 class Konto:
+    historia = []
     def __init__(self,imie,nazwisko,pesel,kod = None):
         self.imie = imie
         self.nazwisko = nazwisko 

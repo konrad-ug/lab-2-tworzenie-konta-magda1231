@@ -13,13 +13,3 @@ class KontoFirmowe(Konto):
             return False
         else:
             return True
-
-    def zaksięguj_przelew_wychodzący(self, kwota):
-        return super().zaksięguj_przelew_wychodzący(kwota)
-
-    def zaksięguj_przelew_przychodzący(self, kwota):
-        return super().zaksięguj_przelew_przychodzący(kwota)
-    
-    def zaksięguj_wychodzacy_przelew_ekspresowy(self, kwota):
-        return super().zaksięguj_wychodzacy_przelew_ekspresowy(kwota)
-   
