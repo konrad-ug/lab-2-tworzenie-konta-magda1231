@@ -2,7 +2,7 @@ import unittest
 
 from ..Konto_firmowe import KontoFirmowe
 
-class TestKsięgowanie(unittest.TestCase):
+class TestKsięgowanieKontoFirmowe(unittest.TestCase):
     nazwa_firmy = "company sp.zoo"
     nip = "1111111111"
 

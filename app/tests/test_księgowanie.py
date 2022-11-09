@@ -2,7 +2,7 @@ import unittest
 
 from ..Konto import Konto
 
-class TestKsięgowanie(unittest.TestCase):
+class TestKsięgowanieKonto(unittest.TestCase):
     imie = "Darek"
     nazwisko = "Kowalski"
     pesel = "1111111111"
