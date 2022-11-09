@@ -2,7 +2,7 @@ import unittest
 
 from ..Konto_firmowe import KontoFirmowe
 
-class TestKsięgowanie(unittest.TestCase):
+class TestKsięgowanieKontoFirmowe(unittest.TestCase):
     nazwa_firmy = "company sp.zoo"
     nip = "1111111111"
 
@@ -29,7 +29,6 @@ class TestKsięgowanie(unittest.TestCase):
         account.saldo = 800
         account.zaksięguj_wychodzacy_przelew_ekspresowy(800)
         self.assertEqual(account.saldo, 800-800-5)
-
 
     def test_nieudany_wychodzący_przelew_ekspresowy(self):
         account = KontoFirmowe(self.nazwa_firmy,self.nip)

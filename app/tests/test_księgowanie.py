@@ -2,7 +2,7 @@ import unittest
 
 from ..Konto import Konto
 
-class TestKsięgowanie(unittest.TestCase):
+class TestKsięgowanieKonto(unittest.TestCase):
     imie = "Darek"
     nazwisko = "Kowalski"
     pesel = "1111111111"
@@ -61,27 +61,4 @@ class TestKsięgowanie(unittest.TestCase):
         konto.saldo = 700
         konto.zaksięguj_wychodzacy_przelew_ekspresowy(-800)
         self.assertEqual(konto.saldo,700)
-
-
-
- 
-
-
-
-    
-
-
-
-
-    
-
-
-
-
-
-
-
-        
-
-        
 

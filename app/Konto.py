@@ -1,5 +1,8 @@
 import re
+
+
 class Konto:
+
     def __init__(self,imie,nazwisko,pesel,kod = None):
         self.imie = imie
         self.nazwisko = nazwisko 
@@ -7,12 +10,15 @@ class Konto:
         self.pesel = pesel
         self.sprawdzenie_peselu(pesel)
         self.sprawdzenie_kodu_po_1960(kod)
+        self.historia = []
         self.oplata = 1
+
 
     def sprawdzenie_peselu(self,pesel):
             if (len(pesel) != 11):
                 self.pesel = "Niepoprawny pesel"
        
+
     def sprawdzenie_kodu_po_1960(self,kod_rabatowy):
          if (kod_rabatowy != None and re.fullmatch(r"PROM_.{3}",kod_rabatowy)):
             if(int(self.pesel[0:2]) > 60
@@ -26,13 +32,23 @@ class Konto:
     def zaksięguj_przelew_wychodzący(self,kwota):
         if(self.saldo >= kwota and kwota > 0):
             self.saldo = self.saldo - kwota
+            self.historia.append(-kwota)
+
+
     def zaksięguj_przelew_przychodzący(self,kwota):
         if(kwota >= 0):
             self.saldo = self.saldo + kwota
+            self.historia.append(kwota)
+
 
     def zaksięguj_wychodzacy_przelew_ekspresowy(self,kwota):
         if(kwota <= self.saldo and kwota > 0 ):
             self.saldo = self.saldo - kwota - self.oplata 
+            self.historia.append(-kwota)
+            self.historia.append(-self.oplata)
+            
+
+
 
 
         
