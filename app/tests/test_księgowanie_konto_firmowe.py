@@ -30,7 +30,6 @@ class TestKsięgowanieKontoFirmowe(unittest.TestCase):
         account.zaksięguj_wychodzacy_przelew_ekspresowy(800)
         self.assertEqual(account.saldo, 800-800-5)
 
-
     def test_nieudany_wychodzący_przelew_ekspresowy(self):
         account = KontoFirmowe(self.nazwa_firmy,self.nip)
         account.saldo = 100

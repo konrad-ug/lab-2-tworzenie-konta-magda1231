@@ -1,9 +1,11 @@
 import unittest
+
 from ..Konto_firmowe import KontoFirmowe
 
 class TestTworzenieKontaFirmowego(unittest.TestCase):
     nazwa_firmy = "Idk sp. zoo"
     nip = "1234567890"
+
     def test_tworzenie_konta(self):
         konto = KontoFirmowe(self.nazwa_firmy, self.nip )
         self.assertEqual(konto.nazwa_firmy,self.nazwa_firmy, "Nazwa firmy nie została napisana")

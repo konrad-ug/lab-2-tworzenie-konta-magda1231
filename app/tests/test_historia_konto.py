@@ -2,7 +2,6 @@ import unittest
 
 from ..Konto import Konto
 
-
 class TestHistoriaKonto(unittest.TestCase):
     imie = "Ala"
     nazwisko = "Kota"
@@ -56,7 +55,6 @@ class TestHistoriaKonto(unittest.TestCase):
         konto.zaksięguj_przelew_przychodzący(800)
         konto.zaksięguj_przelew_wychodzący(800)
         self.assertEqual(konto.historia,[800,-800])
-
     
     def test_historia_pare_przelewów(self):
         konto = Konto(self.imie,self.nazwisko,self.pesel)

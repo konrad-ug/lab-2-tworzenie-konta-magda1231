@@ -68,4 +68,4 @@ class TestTworzenieKonta(unittest.TestCase):
     def test_dobry_kod_po_2000(self):
         kod = "PROM_3.1"
         pierwsze_konto = Konto("Dariusz", "Januszewski", "21211111111", kod)
-        self.assertEqual(pierwsze_konto.saldo, 50, "Kod przyznany osobie urodzonej przed 1960" )
+        self.assertEqual(pierwsze_konto.saldo, 50, "Kod nieprzyznany osobie urodzonej po 2000" )
