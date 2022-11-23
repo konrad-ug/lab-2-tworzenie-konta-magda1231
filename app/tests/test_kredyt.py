@@ -1,5 +1,5 @@
 import unittest
-import parameterized
+# import parameterized
 
 
 from ..Konto import Konto
@@ -11,6 +11,18 @@ class TestKredut(unittest.TestCase):
 
     def setUp(self):
         self.konto = Konto(self.imie,self.nazwisko,self.pesel)
+
+    
+# @parameterized([
+    #     ([-500,100,200,200],500,True,500),
+    #     ([-500,100,200,200],500,True,500)
+
+    # # ])
+    # def test_testy(self,historia,kwota,oczekiwany_wynik,saldo):
+    #     self.konto.historia = historia
+    #     self.assertEqual(self.konto.zaciagnij_kredyt(kwota),True)
+    #     self.assertEqual(self.konto.saldo,saldo,'Złe saldo konta')
+
 
     def test_zaciagnij_kredyt_udany_1(self):
         self.konto.historia = [1000,300,400]
