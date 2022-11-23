@@ -46,12 +46,38 @@ class Konto:
             self.saldo = self.saldo - kwota - self.oplata 
             self.historia.append(-kwota)
             self.historia.append(-self.oplata)
+
+    def zaciagnij_kredyt(self,kwota):
+        last5 = self.historia[-5:]
+
+        if(self.trzy_ostatnie(last5)):
+            self.saldo += kwota 
+            return True 
             
+        elif(self.piec_ostatnich_i_wiecej(last5,kwota)):
+            self.saldo += kwota
+            return True
+        else:
+            return False
+           
 
+    def trzy_ostatnie(self,last5):
+        if(len(last5) == 3):
+            for i in last5:
+                    if(i<0):         
+                        return False
+            return True
 
+    def piec_ostatnich_i_wiecej(self,last5,kwota):
+        if(len(last5) != 5): 
+            return False
+        suma = sum(last5)
+        if(suma > kwota):
+            return True
+        else:
+            return False 
+       
 
-
-        
 
 
    
@@ -67,7 +93,6 @@ class Konto:
 
 
    
-
 
 
 
