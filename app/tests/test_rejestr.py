@@ -15,15 +15,13 @@ class TestRejestrKont(unittest.TestCase):
     def SetUpClass(cls):
         cls.konto = Konto(cls.imie,cls.nazwisko,cls.pesel)
         RejestrKont.dodaj_konto(cls.konto)
-    @classmethod
-    def test_0_ile_kont(cls):
-        RejestrKont.ile_kont()
-        cls.assertEqual(RejestrKont.ile_kont(),1)
+
 
     @classmethod
     def tearDownClass(cls):
         RejestrKont.lista = []
 
+    @classmethod
     def test_1_dodaj_konto(cls):
         cls.assertEqual(RejestrKont.ile_kont(),0)
 
