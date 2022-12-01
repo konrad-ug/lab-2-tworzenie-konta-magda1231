@@ -15,10 +15,17 @@ class TestRejestrKont(unittest.TestCase):
     def SetUpClass(cls):
         cls.konto = Konto(cls.imie,cls.nazwisko,cls.pesel)
         RejestrKont.dodaj_konto(cls.konto)
-        
+
+    def test_0_ile_kont(self):
+        RejestrKont.ile_kont()
+        self.assertEqual(RejestrKont.ile_kont(),1)
+
     @classmethod
     def tearDownClass(cls):
         RejestrKont.lista = []
+
+    def test_1_dodaj_konto(self):
+        self.assertEqual(RejestrKont.ile_kont(),0)
 
    
     def test_1_dodaj_konto(self):
@@ -26,17 +33,14 @@ class TestRejestrKont(unittest.TestCase):
         RejestrKont.dodaj_konto(konto)
         self.assertEqual(RejestrKont.ile_kont(),1)
 
-
     def test_2_dodaj_2_konta(self):
         konto2 = Konto(self.imie,self.nazwisko,self.pesel)
-        konto3 = Konto(self.imie2,self.nazwisko2,self.pesel2)
         RejestrKont.dodaj_konto(konto2)
-        RejestrKont.dodaj_konto(konto3)
-        self.assertEqual(RejestrKont.ile_kont(),3)
+        self.assertEqual(RejestrKont.ile_kont(),2)
 
     def test_3_ile_kont(self):
         RejestrKont.ile_kont()
-        self.assertEqual(RejestrKont.ile_kont(),3)
+        self.assertEqual(RejestrKont.ile_kont(),2)
 
     def test_4_znajdz_po_peselu(self):
         konto = Konto(self.imie,self.nazwisko,"21111111111")
@@ -45,8 +49,6 @@ class TestRejestrKont(unittest.TestCase):
 
     def test_5_znajdz_po_peselu_zły_pesel(self):
         self.assertEqual(RejestrKont.znajdz_konto("111111111"),"To jest zły pesel")
-
-
 
 
 
