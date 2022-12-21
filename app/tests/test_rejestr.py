@@ -23,11 +23,15 @@ class TestAccountRegister(unittest.TestCase):
         cls.account = Account(cls.name,cls.surname,cls.pesel)
         AccountRegister.add_account(cls.account)
         
+
+
     @classmethod
     def tearDownClass(cls):
         AccountRegister.list = []
 
+
    
+
     def test_1_add_account(self):
         account = Account(self.name,self.surname,self.pesel)
         AccountRegister.add_account(account)
@@ -71,8 +75,6 @@ class TestAccountRegister(unittest.TestCase):
         AccountRegister.delete_account("111111111")
         self.assertEqual(AccountRegister.amount_of_accounts(),5)
 
-
-
-
+ 
 
 
