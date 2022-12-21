@@ -38,6 +38,7 @@ class AccountRegister():
         if account != "To jest zły pesel":
             cls.list.remove(account)
         return account
+        
     
 
 
