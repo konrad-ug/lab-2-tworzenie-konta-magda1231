@@ -9,8 +9,11 @@ class TestAccountRegister(unittest.TestCase):
     surname = "Kowalski"
     surname2 = "Kowalski"
     pesel = "11111111111"
-    pesel2 = "11111111111"
+    pesel2 = "12111111111"
     pesel3 = "01111111111"
+    pesel4 = "02111111111"
+    pesel5 = "02311111111"
+    pesel6 = "02311111111"
 
     data = {
         "name": "Ala",
@@ -35,8 +38,8 @@ class TestAccountRegister(unittest.TestCase):
 
 
     def test_2_dodaj_2_accounts(self):
-        account2 = Account(self.name,self.surname,self.pesel)
-        account3 = Account(self.name2,self.surname2,self.pesel2)
+        account2 = Account(self.name,self.surname,self.pesel2)
+        account3 = Account(self.name2,self.surname2,self.pesel3)
         AccountRegister.add_account(account2)
         AccountRegister.add_account(account3)
         self.assertEqual(AccountRegister.amount_of_accounts(),3)
@@ -54,21 +57,26 @@ class TestAccountRegister(unittest.TestCase):
         self.assertEqual(AccountRegister.find_account("111111111"),"To jest zły pesel")
 
     def test_6_zmiana_danych(self):
-        account5 = Account(self.name,self.surname,self.pesel3)
+        account5 = Account(self.name,self.surname,self.pesel4)
         AccountRegister.add_account(account5)
-        account_aktualizacja = AccountRegister.update_account(self.pesel3,self.data)
+        account_aktualizacja = AccountRegister.update_account(self.pesel4,self.data)
         self.assertEqual(account_aktualizacja.name, self.data['name'])
         self.assertEqual(account_aktualizacja.surname, self.data['surname'])
         self.assertEqual(account_aktualizacja.balance, self.data['balance'])
 
     def test_7_delete_account(self):
-        account6 = Account(self.name,self.surname,self.pesel)
+        account6 = Account(self.name,self.surname,self.pesel5)
         AccountRegister.add_account(account6)
-        AccountRegister.delete_account(self.pesel)
+        AccountRegister.delete_account(self.pesel5)
         self.assertEqual(AccountRegister.amount_of_accounts(),5)
 
     def test_8_delete_account_zły_pesel(self):
         AccountRegister.delete_account("111111111")
+        self.assertEqual(AccountRegister.amount_of_accounts(),5)
+
+    def test_9_create_account_existing_pesel(self):
+        account7 = Account(self.name,self.surname,self.pesel)
+        AccountRegister.add_account(account7)
         self.assertEqual(AccountRegister.amount_of_accounts(),5)
 
 

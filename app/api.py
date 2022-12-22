@@ -8,8 +8,9 @@ def create_account():
     data = request.get_json()
     print(f"Request o stworzenie accounts z danymi: {data}")
     account = Account(data["name"], data["surname"], data["pesel"])
-    AccountRegister.add_account(account)
-    return jsonify("Account stworzone"), 201
+    if AccountRegister.add_account(account) != "To konto już istnieje":
+        return jsonify("Account stworzone"), 201
+    return jsonify("To konto już istnieje"), 400
 
 @app.route("/accounts/amount_of_accounts", methods=['GET'])
 def amount_of_accounts():
@@ -40,6 +41,7 @@ def delete_account(pesel):
         AccountRegister.delete_account(pesel)
         return jsonify("Usunięto konto"), 200
     return jsonify("Zły"),404
+
 
 
 
