@@ -13,6 +13,7 @@ class TestObsługaKont(unittest.TestCase):
         'balance':11
     }
     url="http://localhost:5000"
+    
 
     def test_1_create_account_right(self):
         resp = requests.post(self.url + "/accounts/create_account", json = self.body)
