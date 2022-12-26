@@ -23,31 +23,24 @@ class TestAccountRegister(unittest.TestCase):
         cls.account = Account(cls.name,cls.surname,cls.pesel)
         AccountRegister.add_account(cls.account)
         
-
-
     @classmethod
     def tearDownClass(cls):
         AccountRegister.list = []
 
-
-   
 
     def test_1_add_account(self):
         account = Account(self.name,self.surname,self.pesel)
         AccountRegister.add_account(account)
         self.assertEqual(AccountRegister.amount_of_accounts(),1)
 
-
-    def test_2_dodaj_2_accounts(self):
+    def test_2_dodaj_2_account(self):
         account2 = Account(self.name,self.surname,self.pesel)
-        account3 = Account(self.name2,self.surname2,self.pesel2)
         AccountRegister.add_account(account2)
-        AccountRegister.add_account(account3)
-        self.assertEqual(AccountRegister.amount_of_accounts(),3)
+        self.assertEqual(AccountRegister.amount_of_accounts(),2)
 
     def test_3_amount_of_accounts(self):
         AccountRegister.amount_of_accounts()
-        self.assertEqual(AccountRegister.amount_of_accounts(),3)
+        self.assertEqual(AccountRegister.amount_of_accounts(),2)
 
     def test_4_find_po_peselu(self):
         account4 = Account(self.name,self.surname,"21111111111")
@@ -65,15 +58,20 @@ class TestAccountRegister(unittest.TestCase):
         self.assertEqual(account_aktualizacja.surname, self.data['surname'])
         self.assertEqual(account_aktualizacja.balance, self.data['balance'])
 
+    def test_7_zmiana_danych_zły_pesel(self):
+        self.assertEqual(AccountRegister.update_account("111111111",self.data),"To jest zły pesel")
+
     def test_7_delete_account(self):
         account6 = Account(self.name,self.surname,self.pesel)
         AccountRegister.add_account(account6)
         AccountRegister.delete_account(self.pesel)
-        self.assertEqual(AccountRegister.amount_of_accounts(),5)
+        self.assertEqual(AccountRegister.amount_of_accounts(),4)
 
     def test_8_delete_account_zły_pesel(self):
         AccountRegister.delete_account("111111111")
-        self.assertEqual(AccountRegister.amount_of_accounts(),5)
+        self.assertEqual(AccountRegister.amount_of_accounts(),4)
+
+
 
  
 

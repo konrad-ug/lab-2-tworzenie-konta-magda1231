@@ -1,7 +1,7 @@
 import re
 
 
-class Account:
+class Account():
 
     def __init__(self,name,surname,pesel,kod = None):
         self.name = name
