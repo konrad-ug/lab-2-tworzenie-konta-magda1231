@@ -40,7 +40,7 @@ class TestObsługaKont(unittest.TestCase):
         resp_body = resp.json()
         self.assertEqual(resp_body, "Usunięto konto")
 
-    def test_5_amount_of_accounts(self):
+    def test_5_accounts_ammount(self):
         resp = requests.get(self.url + "/accounts/amount_of_accounts")
         self.assertEqual(resp.status_code,200)
         resp_body = resp.json()
