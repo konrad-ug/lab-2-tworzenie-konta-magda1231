@@ -45,12 +45,12 @@ class TestAccountRegister(unittest.TestCase):
         AccountRegister.amount_of_accounts()
         self.assertEqual(AccountRegister.amount_of_accounts(),3)
 
-    def test_4_find_po_peselu(self):
+    def test_4_find(self):
         account4 = Account(self.name,self.surname,"21111111111")
         AccountRegister.add_account(account4)
         self.assertEqual(AccountRegister.find_account("21111111111"),account4)
 
-    def test_5_find_po_peselu_zły_pesel(self):
+    def test_5_find_bad_pesel(self):
         self.assertEqual(AccountRegister.find_account("111111111"),"To jest zły pesel")
 
     def test_6_zmiana_danych(self):
