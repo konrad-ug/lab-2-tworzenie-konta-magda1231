@@ -6,10 +6,10 @@ class AccountRegister():
 
     @classmethod
     def add_account(cls,account):
-         if cls.find_account(account.pesel) == "To jest zły pesel":
-           cls.list.append(account)
-           return
-         
+        if cls.find_account(account.pesel) == "To jest zły pesel":
+            cls.list.append(account)
+        return
+
     @classmethod
     def amount_of_accounts(cls):
         return len(cls.list)
@@ -33,13 +33,16 @@ class AccountRegister():
             if 'balance' in new_data:
                 account.balance = new_data['balance']
         return account
-    
+
     @classmethod
     def delete_account(cls,pesel):
         account = cls.find_account(pesel)
         if account != "To jest zły pesel":
             cls.list.remove(account)
         return account
+
+
+
     
 
 

@@ -69,7 +69,8 @@ class TestAccountRegister(unittest.TestCase):
         self.assertEqual(AccountRegister.amount_of_accounts(),4)
 
     def test_10_create_account_existing_pesel(self):
-        account7 = Account(self.name,self.surname,self.pesel)
+        account7 = Account(self.name,self.surname,self.pesel2)
+        AccountRegister.add_account(account7)
         self.assertEqual(AccountRegister.amount_of_accounts(),4)
 
 

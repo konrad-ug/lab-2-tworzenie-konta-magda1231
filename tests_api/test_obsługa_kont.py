@@ -47,6 +47,13 @@ class TestObsługaKont(unittest.TestCase):
         resp_body = resp.json()
         self.assertEqual(resp_body, 0)
 
+    def test_5_create_account_existing_pesel(self):
+        resp = requests.post(self.url + "/accounts/create_account", json = self.body)
+        resp = requests.post(self.url + "/accounts/create_account", json = self.body)
+        self.assertEqual(resp.status_code,400)
+        resp_body = resp.json()
+        self.assertEqual(resp_body, "To konto już istnieje")
+
 
         
 
