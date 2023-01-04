@@ -9,7 +9,7 @@ class AccountRegister():
          if cls.find_account(account.pesel) == "To jest zły pesel":
            cls.list.append(account)
            return
-         else :
+         else:
              return "Ten pesel już istnieje"
 
     @classmethod
