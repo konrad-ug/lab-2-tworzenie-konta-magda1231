@@ -8,7 +8,9 @@ class AccountRegister():
     def add_account(cls,account):
         if cls.find_account(account.pesel) == "To jest zły pesel":
             cls.list.append(account)
-        return
+            return
+        else:
+            return "To konto już istnieje"
 
     @classmethod
     def amount_of_accounts(cls):
