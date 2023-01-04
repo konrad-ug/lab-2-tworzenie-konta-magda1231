@@ -20,5 +20,7 @@ class RejestrKont():
             return i
        return "To jest zły pesel"
      
+
+     #ok
     
 
