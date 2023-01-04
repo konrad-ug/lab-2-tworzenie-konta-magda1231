@@ -1,4 +1,7 @@
-# bank-app
+## Magdalena Makaro grupa 3
+
+# bank-app 
+
 
 | Termin oddania | Punkty |
 | ------- | ------ |
