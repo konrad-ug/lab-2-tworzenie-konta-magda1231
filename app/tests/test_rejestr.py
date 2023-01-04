@@ -27,6 +27,9 @@ class TestAccountRegister(unittest.TestCase):
     def tearDownClass(cls):
         AccountRegister.list = []
 
+    def test_0_no_accounts(self):
+        self.assertEqual(AccountRegister.amount_of_accounts(),0)
+
 
     def test_1_add_account(self):
         account = Account(self.name,self.surname,self.pesel)
