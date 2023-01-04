@@ -1,15 +1,15 @@
 import unittest
 from parameterized import parameterized
 
-from ..Konto import Konto
+from ..Account import Account
 
 class TestKredut(unittest.TestCase):
-    imie = "Darek"
-    nazwisko = "Kowalski"
+    name = "Darek"
+    surname = "Kowalski"
     pesel = "1111111111"
 
     def setUp(self):
-        self.konto = Konto(self.imie,self.nazwisko,self.pesel)
+        self.account = Account(self.name,self.surname,self.pesel)
 
     
     @parameterized.expand([
@@ -26,11 +26,11 @@ class TestKredut(unittest.TestCase):
         
 
     ])
-    def test_testy(self,historia,kwota,oczekiwany_wynik,saldo):
-        self.konto.historia = historia
-        self.konto.saldo = sum(historia)
-        self.assertEqual(self.konto.zaciagnij_kredyt(kwota),oczekiwany_wynik)
-        self.assertEqual(self.konto.saldo,saldo,'Złe saldo konta')
+    def test_testy(self,history,amount,oczekiwany_wynik,balance):
+        self.account.history = history
+        self.account.balance = sum(history)
+        self.assertEqual(self.account.take_loan(amount),oczekiwany_wynik)
+        self.assertEqual(self.account.balance,balance,'Złe balance accounts')
 
 
 
