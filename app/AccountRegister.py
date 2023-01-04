@@ -1,4 +1,4 @@
-from .Account import Account
+from .Konto import Konto
 
 
 class AccountRegister():
@@ -17,7 +17,6 @@ class AccountRegister():
         return len(cls.list)
         
         
-
     @classmethod
     def find_account(cls,pesel):
        for i in cls.list:
