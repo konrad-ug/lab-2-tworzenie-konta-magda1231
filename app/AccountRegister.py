@@ -16,6 +16,7 @@ class AccountRegister():
     def amount_of_accounts(cls):
         return len(cls.list)
         
+        
 
     @classmethod
     def find_account(cls,pesel):
